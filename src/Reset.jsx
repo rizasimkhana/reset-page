@@ -6,13 +6,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 function Reset() {
     const { randomString } = useParams();
     const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
     const [message, setMessage] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
-    useEffect(() => {
-        console.log(randomString)
-    }, [])
 
 
     const handleSubmit = async (e) => {
@@ -28,8 +24,11 @@ function Reset() {
                 { newPassword: password }
             );
             setMessage('Password reset successfully!');
+            setPassword(" ");
+            
         } catch (err) {
             setError('expired link');
+            setPassword(" ")
         } finally {
             setLoading(false);
         }
@@ -38,8 +37,9 @@ function Reset() {
 
     return (
 
-
-        <div className="card p-4" style={{ marginLeft: "1rem", marginTop: "17%", marginRight: "1%" }}>
+        <>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+        <div className="card p-4" style={{ marginLeft: "1rem", marginTop: "17%", marginRight: "1%"}}>
             <form onSubmit={handleSubmit}>
                 <div className="mb-3" style={{ display: "flex", flexDirection: "column" }}>
                     <label for="password" className="form-label">New Pasword:</label>
@@ -59,6 +59,8 @@ function Reset() {
             {error && <p style={{ color: 'red' }}>{error}</p>}
             {message && <p style={{ color: 'green' }}>{message}</p>}
         </div>
+        </>
+       
     )
 }
 export default Reset
