@@ -26,7 +26,7 @@ function Reset() {
             );
             setMessage('Password reset successfully!');
             setTimeout(() => {
-                navigate("https://password-reset678.netlify.app/")
+                navigate("/back")
                }, 3000);
 
             setPassword(' ');
