@@ -1,6 +1,7 @@
 import {BrowserRouter as Router,Route,Routes } from 'react-router-dom';
 import Reset from './Reset';
-import Signin from './signin';
+import Signin from './Signin';
+Signin
 const App = () => {
 return (
     <Router>
