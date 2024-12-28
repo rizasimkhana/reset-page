@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.css';
+import { useNavigate } from 'react-router-dom';
 
 function Reset() {
     const { randomString } = useParams();
@@ -9,7 +10,7 @@ function Reset() {
     const [message, setMessage] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
-
+    const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -24,7 +25,12 @@ function Reset() {
                 { newPassword: password }
             );
             setMessage('Password reset successfully!');
-            setPassword(" ");
+            setTimeout(() => {
+                navigate("https://password-reset678.netlify.app/")
+               }, 3000);
+
+            setPassword(' ');
+
             
         } catch (err) {
             setError('expired link');
